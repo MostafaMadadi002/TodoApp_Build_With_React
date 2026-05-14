@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <div className="todo-header">
-            <img src='src\assets\LOGO.jpg' alt="" />
+            <img src='/LOGO.jpg' alt="" />
             <h3>Ghargistan university</h3>
             <h4>6th Semster Project</h4>
             <h1>Todo App</h1>
