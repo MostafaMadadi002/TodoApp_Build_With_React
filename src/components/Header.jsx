@@ -14,7 +14,7 @@ const Header = () => {
         <div className="todo-header">
             <img src='/LOGO.jpg' alt="" />
             <h3>Ghargistan university</h3>
-            <h4>6th Semster Project</h4>
+            <h4>6th Semester Project</h4>
             <h1>Todo App</h1>
             <div className="date-badge">
                 <span>📅</span> {formattedDate}
