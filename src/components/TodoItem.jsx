@@ -1,22 +1,22 @@
 // components/TodoItem.jsx
-import React, { useState } from 'react';
-import { toggleTodoComplete, editTodo, deleteTodo, loadTodos } from '../storage';
+import React, { useEffect, useState } from 'react';
 
-const TodoItem = ({ todo, onTodosUpdate }) => {
+const TodoItem = ({ todo, onToggle, onEdit, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editText, setEditText] = useState(todo.text);
 
+    useEffect(() => {
+        setEditText(todo.text);
+    }, [todo.text]);
+
     const handleToggle = () => {
-        const currentTodos = loadTodos();
-        const updatedTodos = toggleTodoComplete(currentTodos, todo.id);
-        onTodosUpdate(updatedTodos);
+        onToggle(todo.id, !todo.completed);
     };
 
     const handleEditSubmit = () => {
-        if (editText.trim() && editText !== todo.text) {
-            const currentTodos = loadTodos();
-            const updatedTodos = editTodo(currentTodos, todo.id, editText);
-            onTodosUpdate(updatedTodos);
+        const trimmed = editText.trim();
+        if (trimmed && trimmed !== todo.text) {
+            onEdit(todo.id, trimmed);
         }
         setIsEditing(false);
     };
@@ -27,9 +27,7 @@ const TodoItem = ({ todo, onTodosUpdate }) => {
     };
 
     const handleDelete = () => {
-        const currentTodos = loadTodos();
-        const updatedTodos = deleteTodo(currentTodos, todo.id);
-        onTodosUpdate(updatedTodos);
+        onDelete(todo.id);
     };
 
     const handleKeyDown = (e) => {

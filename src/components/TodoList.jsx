@@ -1,8 +1,8 @@
 // components/TodoList.jsx
-import React from 'react';
+
 import TodoItem from './TodoItem';
 
-const TodoList = ({ todos, onTodosUpdate }) => {
+const TodoList = ({ todos, onToggle, onEdit, onDelete }) => {
   if (todos.length === 0) {
     return (
       <div className="todo-list">
@@ -19,7 +19,9 @@ const TodoList = ({ todos, onTodosUpdate }) => {
         <TodoItem
           key={todo.id}
           todo={todo}
-          onTodosUpdate={onTodosUpdate}
+          onToggle={onToggle}
+          onEdit={onEdit}
+          onDelete={onDelete}
         />
       ))}
     </div>
