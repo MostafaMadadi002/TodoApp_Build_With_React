@@ -24,7 +24,7 @@ export const addTodo = (todos, text) => {
     completed: false,
     createdAt: new Date().toISOString(),
   };
-
+  
   const updatedTodos = [newTodo, ...todos];
   saveTodos(updatedTodos);
   return updatedTodos;
